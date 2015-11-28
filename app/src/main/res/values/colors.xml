@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<color name="primary">#4CAF50</color>-->
+    <!--<color name="primary_dark">#388E3C</color>-->
+    <!--<color name="accent">#ff19ff4a</color>-->
+
+    <color name="primary">#0097A7</color>
+    <color name="primary_dark">#006064</color>
+    <color name="accent">#0097A7</color>
+
+    <!--Navigation Drawer -->
+    <color name="drawer_background">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="grey">#4d4d4d</color>
+</resources>

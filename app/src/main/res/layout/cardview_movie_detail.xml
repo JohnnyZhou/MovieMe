@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/detailCardView"
+    android:layout_gravity="center"
+    android:layout_margin="8dp"
+    card_view:cardCornerRadius="4dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/detailsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Details"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+
+        <TextView
+            android:id="@+id/releasedTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detailsTitle"
+            android:layout_marginTop="20dp"
+            android:text="Released"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/releasedTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/releasedTitleTextView"
+            android:layout_alignParentRight="true"
+            tools:text="7 Nov 2015" />
+
+        <TextView
+            android:id="@+id/runningTimeTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/releasedTitleTextView"
+            android:layout_marginTop="10dp"
+            android:text="Running time"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/runningTimeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/runningTimeTitleTextView"
+            android:layout_alignParentRight="true"
+            tools:text="160 mins" />
+
+        <TextView
+            android:id="@+id/genresTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/runningTimeTitleTextView"
+            android:layout_marginTop="10dp"
+            android:text="Genres"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/genresTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/genresTitleTextView"
+            android:layout_alignParentRight="true"
+            tools:text="Action, Drama" />
+
+        <TextView
+            android:id="@+id/budgetTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/genresTitleTextView"
+            android:layout_marginTop="10dp"
+            android:text="Budget"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/budgetTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/budgetTitleTextView"
+            android:layout_alignParentRight="true"
+            tools:text="$2,000,000" />
+
+        <TextView
+            android:id="@+id/languageTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/budgetTitleTextView"
+            android:layout_marginTop="10dp"
+            android:text="Language"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/languageTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/languageTitleTextView"
+            android:layout_alignParentRight="true"
+            tools:text="English" />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
