@@ -28,7 +28,7 @@ Third party libraries:
 - <a href="http://google.github.io/dagger/">Dagger 2</a>
 - <a href="http://square.github.io/retrofit/">Retrofit 2</a>
 - <a href="https://github.com/ReactiveX/RxJava">RxJava</a>
-- <a href="https://github.com/ReactiveX/RxAndroid">RxAndroid 2</a>
+- <a href="https://github.com/ReactiveX/RxAndroid">RxAndroid</a>
 - <a href="https://github.com/bumptech/glide">Glide</a>
 - <a href="https://github.com/greenrobot/EventBus">EventBus 3.0</a>
 - <a href="http://jakewharton.github.io/butterknife/">Butterknife</a>
