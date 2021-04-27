@@ -1,9 +1,9 @@
 package com.johnnyzhou.movieme.di.module;
 
-import android.support.v4.app.FragmentManager;
+import androidx.fragment.app.FragmentManager;
 
 import com.johnnyzhou.movieme.di.scope.PerActivity;
-import com.johnnyzhou.movieme.ui.base.BaseActivity;
+import com.johnnyzhou.movieme.ui.common.BaseActivity;
 import com.johnnyzhou.movieme.ui.movie.list.MovieListFragment;
 import com.johnnyzhou.movieme.ui.person.list.PersonListFragment;
 

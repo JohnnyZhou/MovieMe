@@ -15,11 +15,11 @@ public class MovieDetailPresenter implements MovieDetailContract.Presenter<Movie
     private MovieDetailInteractor interactor;
     private MovieDetailContract.View view;
     private Scheduler mainThread;
-    private DetailMovie movie;
+    private MovieDetail movie;
 
     private static MovieDetailContract.View emptyView = new MovieDetailContract.View() {
         @Override
-        public void showMovie(DetailMovie movie) {
+        public void showMovie(MovieDetail movie) {
 
         }
 
@@ -54,9 +54,9 @@ public class MovieDetailPresenter implements MovieDetailContract.Presenter<Movie
 
         interactor.getMovie(movieId)
                 .observeOn(mainThread)
-                .subscribe(new Action1<DetailMovie>() {
+                .subscribe(new Action1<MovieDetail>() {
                     @Override
-                    public void call(DetailMovie movie) {
+                    public void call(MovieDetail movie) {
                         MovieDetailPresenter.this.movie = movie;
                         showMovie(movie);
                     }
@@ -68,7 +68,7 @@ public class MovieDetailPresenter implements MovieDetailContract.Presenter<Movie
                 });
     }
 
-    private void showMovie(DetailMovie movie) {
+    private void showMovie(MovieDetail movie) {
         view.showError(null);
         view.showLoading(false);
         view.showMovie(movie);

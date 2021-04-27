@@ -1,7 +1,7 @@
 package com.johnnyzhou.movieme.ui.movie.list;
 
-import com.johnnyzhou.movieme.ui.base.MvpPresenter;
-import com.johnnyzhou.movieme.ui.base.MvpView;
+import com.johnnyzhou.movieme.ui.common.MvpPresenter;
+import com.johnnyzhou.movieme.ui.common.MvpView;
 import com.johnnyzhou.movieme.ui.movie.Movie;
 
 import java.util.List;

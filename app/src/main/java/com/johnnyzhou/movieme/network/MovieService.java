@@ -2,8 +2,8 @@ package com.johnnyzhou.movieme.network;
 
 import com.johnnyzhou.movieme.network.response.MovieListResponse;
 import com.johnnyzhou.movieme.network.response.PersonListResponse;
-import com.johnnyzhou.movieme.ui.movie.detail.DetailMovie;
-import com.johnnyzhou.movieme.ui.person.detail.DetailPerson;
+import com.johnnyzhou.movieme.ui.movie.detail.MovieDetail;
+import com.johnnyzhou.movieme.ui.person.detail.PersonDetail;
 
 import retrofit.http.GET;
 import retrofit.http.Path;
@@ -28,12 +28,12 @@ public interface MovieService {
     );
 
     @GET("movie/{id}?")
-    Observable<DetailMovie> getMovie(
+    Observable<MovieDetail> getMovie(
             @Path("id") String movieId
     );
 
     @GET("person/{id}?")
-    Observable<DetailPerson> getPerson(
+    Observable<PersonDetail> getPerson(
             @Path("id") String personId
     );
 }

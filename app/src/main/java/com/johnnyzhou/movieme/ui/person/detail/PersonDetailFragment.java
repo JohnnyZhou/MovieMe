@@ -1,9 +1,6 @@
 package com.johnnyzhou.movieme.ui.person.detail;
 
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +8,15 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
+
 import com.bumptech.glide.Glide;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.johnnyzhou.movieme.R;
 import com.johnnyzhou.movieme.di.component.DaggerFragmentComponent;
-import com.johnnyzhou.movieme.ui.base.BaseActivity;
-import com.johnnyzhou.movieme.ui.base.BaseFragment;
+import com.johnnyzhou.movieme.ui.common.BaseActivity;
+import com.johnnyzhou.movieme.ui.common.BaseFragment;
 
 import javax.inject.Inject;
 
@@ -100,12 +101,12 @@ public class PersonDetailFragment extends BaseFragment implements PersonDetailCo
     }
 
     @Override
-    public void showPerson(DetailPerson person) {
+    public void showPerson(PersonDetail person) {
         dobTextView.setVisibility(View.VISIBLE);
         overview.setVisibility(View.VISIBLE);
         overview.setText(person.getBiography());
         collapsingToolbar.setTitle(person.getName());
-        Glide.with(this)
+        Glide.with(getContext())
                 .load(person.getBackdropUrl())
                 .into(backdropImageView);
 

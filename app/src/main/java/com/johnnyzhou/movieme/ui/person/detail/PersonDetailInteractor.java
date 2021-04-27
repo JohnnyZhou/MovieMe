@@ -17,7 +17,7 @@ public class PersonDetailInteractor {
         this.ioThread = ioThread;
     }
 
-    public Observable<DetailPerson> getPerson(String personId) {
+    public Observable<PersonDetail> getPerson(String personId) {
         return movieDbApi.getPerson(personId)
                 .subscribeOn(ioThread);
     }

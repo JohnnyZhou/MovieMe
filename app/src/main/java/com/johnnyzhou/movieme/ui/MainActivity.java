@@ -2,25 +2,25 @@ package com.johnnyzhou.movieme.ui;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.core.view.MenuItemCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.johnnyzhou.movieme.R;
 import com.johnnyzhou.movieme.di.component.DaggerActivityComponent;
 import com.johnnyzhou.movieme.di.module.ActivityModule;
-import com.johnnyzhou.movieme.ui.base.BaseActivity;
+import com.johnnyzhou.movieme.ui.common.BaseActivity;
 import com.johnnyzhou.movieme.ui.drawer.DrawerAdapter;
 import com.johnnyzhou.movieme.ui.drawer.DrawerItemClick;
 import com.johnnyzhou.movieme.ui.movie.list.MovieListFragment;
@@ -74,9 +74,9 @@ public class MainActivity extends BaseActivity {
 
         setSupportActionBar(toolbar);
 
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null)
-            actionBar.setDisplayShowTitleEnabled(false);
+//        ActionBar actionBar = getSupportActionBar();
+//        if (actionBar != null)
+//            actionBar.setDisplayShowTitleEnabled(false);
 
         if (savedInstanceState != null) {
             currentFragment = savedInstanceState.getInt(KEY_CURRENT_FRAGMENT);

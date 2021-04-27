@@ -1,6 +1,6 @@
-package com.johnnyzhou.movieme.ui.base;
+package com.johnnyzhou.movieme.ui.common;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.johnnyzhou.movieme.MovieMeApp;
 import com.johnnyzhou.movieme.di.component.AppComponent;

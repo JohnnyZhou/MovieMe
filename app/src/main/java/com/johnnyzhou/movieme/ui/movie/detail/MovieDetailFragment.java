@@ -5,13 +5,6 @@ import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.UiThread;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.ActionBar;
-import android.support.v7.graphics.Palette;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,14 +15,22 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.UiThread;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
+import androidx.palette.graphics.Palette;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.johnnyzhou.movieme.R;
 import com.johnnyzhou.movieme.di.component.DaggerFragmentComponent;
-import com.johnnyzhou.movieme.ui.base.BaseActivity;
-import com.johnnyzhou.movieme.ui.base.BaseFragment;
+import com.johnnyzhou.movieme.ui.common.BaseActivity;
+import com.johnnyzhou.movieme.ui.common.BaseFragment;
 
 import javax.inject.Inject;
 
@@ -149,7 +150,7 @@ public class MovieDetailFragment extends BaseFragment implements MovieDetailCont
 
     @Override
     @UiThread
-    public void showMovie(DetailMovie movie) {
+    public void showMovie(MovieDetail movie) {
         progressBar.setVisibility(View.INVISIBLE);
         detailCardView.setVisibility(View.VISIBLE);
         posterImageView.setVisibility(View.VISIBLE);
@@ -193,12 +194,12 @@ public class MovieDetailFragment extends BaseFragment implements MovieDetailCont
             }
         };
 
-        Glide.with(this)
+        Glide.with(getContext())
                 .load(movie.getBackdropUrl())
                 .asBitmap()
                 .into(target);
 
-        Glide.with(this)
+        Glide.with(getContext())
                 .load(movie.getPosterUrl())
                 .into(posterImageView);
     }

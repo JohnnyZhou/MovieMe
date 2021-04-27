@@ -9,9 +9,6 @@ import com.johnnyzhou.movieme.di.component.DaggerAppComponent;
 import com.johnnyzhou.movieme.di.module.ApiModule;
 import com.johnnyzhou.movieme.di.module.AppModule;
 import com.johnnyzhou.movieme.util.NetworkUtil;
-import com.squareup.leakcanary.AndroidExcludedRefs;
-import com.squareup.leakcanary.DisplayLeakService;
-import com.squareup.leakcanary.ExcludedRefs;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 

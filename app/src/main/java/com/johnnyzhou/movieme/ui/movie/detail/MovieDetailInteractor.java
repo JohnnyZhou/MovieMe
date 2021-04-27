@@ -17,7 +17,7 @@ public class MovieDetailInteractor {
         this.ioThread = ioThread;
     }
 
-    public Observable<DetailMovie> getMovie(String movieId) {
+    public Observable<MovieDetail> getMovie(String movieId) {
         return networkManager.getMovie(movieId)
                 .subscribeOn(ioThread);
     }

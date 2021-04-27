@@ -1,6 +1,6 @@
-package com.johnnyzhou.movieme.ui.base;
+package com.johnnyzhou.movieme.ui.common;
 
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 import com.johnnyzhou.movieme.di.component.AppComponent;
 

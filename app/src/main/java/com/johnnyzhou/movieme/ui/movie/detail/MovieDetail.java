@@ -8,7 +8,7 @@ import com.johnnyzhou.movieme.ui.movie.Movie;
 import java.text.NumberFormat;
 import java.util.List;
 
-public class DetailMovie extends Movie {
+public class MovieDetail extends Movie {
     @SerializedName("spoken_languages")
     private List<Language> languages;
     private List<Genre> genres;
@@ -33,7 +33,7 @@ public class DetailMovie extends Movie {
         }
     }
 
-    public DetailMovie() {
+    public MovieDetail() {
     }
 
     public String getTagline() {

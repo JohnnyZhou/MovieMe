@@ -11,11 +11,11 @@ public class PersonDetailPresenter implements PersonDetailContract.Presenter<Per
     private CompositeSubscription subscriptions;
     private PersonDetailContract.View view;
     private Scheduler mainThread;
-    private DetailPerson person;
+    private PersonDetail person;
 
     private static PersonDetailContract.View emptyView = new PersonDetailContract.View() {
         @Override
-        public void showPerson(DetailPerson person) {
+        public void showPerson(PersonDetail person) {
 
         }
 
@@ -48,9 +48,9 @@ public class PersonDetailPresenter implements PersonDetailContract.Presenter<Per
 
         interactor.getPerson(personId)
                 .observeOn(mainThread)
-                .subscribe(new Action1<DetailPerson>() {
+                .subscribe(new Action1<PersonDetail>() {
                     @Override
-                    public void call(DetailPerson person) {
+                    public void call(PersonDetail person) {
                         PersonDetailPresenter.this.person = person;
                         showPerson(person);
                     }
@@ -62,7 +62,7 @@ public class PersonDetailPresenter implements PersonDetailContract.Presenter<Per
                 });
     }
 
-    private void showPerson(DetailPerson person) {
+    private void showPerson(PersonDetail person) {
         view.showError(null);
         view.showLoading(false);
         view.showPerson(person);

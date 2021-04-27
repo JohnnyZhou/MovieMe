@@ -2,8 +2,8 @@ package com.johnnyzhou.movieme.network;
 
 import com.johnnyzhou.movieme.network.response.MovieListResponse;
 import com.johnnyzhou.movieme.network.response.PersonListResponse;
-import com.johnnyzhou.movieme.ui.movie.detail.DetailMovie;
-import com.johnnyzhou.movieme.ui.person.detail.DetailPerson;
+import com.johnnyzhou.movieme.ui.movie.detail.MovieDetail;
+import com.johnnyzhou.movieme.ui.person.detail.PersonDetail;
 
 import javax.inject.Inject;
 
@@ -23,7 +23,7 @@ public class NetworkManagerImpl implements NetworkManager {
     }
 
     @Override
-    public Observable<DetailMovie> getMovie(String movieId) {
+    public Observable<MovieDetail> getMovie(String movieId) {
         return movieApi.getMovie(movieId);
     }
 
@@ -38,7 +38,7 @@ public class NetworkManagerImpl implements NetworkManager {
     }
 
     @Override
-    public Observable<DetailPerson> getPerson(String personId) {
+    public Observable<PersonDetail> getPerson(String personId) {
         return movieApi.getPerson(personId);
     }
 

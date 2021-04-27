@@ -2,8 +2,8 @@ package com.johnnyzhou.movieme.network;
 
 import com.johnnyzhou.movieme.network.response.MovieListResponse;
 import com.johnnyzhou.movieme.network.response.PersonListResponse;
-import com.johnnyzhou.movieme.ui.movie.detail.DetailMovie;
-import com.johnnyzhou.movieme.ui.person.detail.DetailPerson;
+import com.johnnyzhou.movieme.ui.movie.detail.MovieDetail;
+import com.johnnyzhou.movieme.ui.person.detail.PersonDetail;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -35,11 +35,11 @@ public class MovieApi {
         return movieService.searchPerson(personName);
     }
 
-    public Observable<DetailMovie> getMovie(String movieId) {
+    public Observable<MovieDetail> getMovie(String movieId) {
         return movieService.getMovie(movieId);
     }
 
-    public Observable<DetailPerson> getPerson(String personId) {
+    public Observable<PersonDetail> getPerson(String personId) {
         return movieService.getPerson(personId);
     }
 }

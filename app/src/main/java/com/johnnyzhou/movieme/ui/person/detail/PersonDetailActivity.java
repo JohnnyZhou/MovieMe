@@ -1,12 +1,13 @@
 package com.johnnyzhou.movieme.ui.person.detail;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
+
+import androidx.fragment.app.FragmentManager;
 
 import com.johnnyzhou.movieme.R;
 import com.johnnyzhou.movieme.di.component.DaggerActivityComponent;
 import com.johnnyzhou.movieme.di.module.ActivityModule;
-import com.johnnyzhou.movieme.ui.base.BaseActivity;
+import com.johnnyzhou.movieme.ui.common.BaseActivity;
 
 import javax.inject.Inject;
 

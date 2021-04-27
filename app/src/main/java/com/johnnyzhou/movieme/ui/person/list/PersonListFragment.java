@@ -2,18 +2,19 @@ package com.johnnyzhou.movieme.ui.person.list;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.UiThread;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.UiThread;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.johnnyzhou.movieme.R;
 import com.johnnyzhou.movieme.di.component.DaggerFragmentComponent;
-import com.johnnyzhou.movieme.ui.base.BaseFragment;
+import com.johnnyzhou.movieme.ui.common.BaseFragment;
 import com.johnnyzhou.movieme.ui.person.Person;
 import com.johnnyzhou.movieme.ui.person.detail.PersonDetailActivity;
 

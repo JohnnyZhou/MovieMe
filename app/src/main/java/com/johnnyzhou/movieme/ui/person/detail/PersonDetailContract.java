@@ -1,13 +1,11 @@
 package com.johnnyzhou.movieme.ui.person.detail;
 
-import com.johnnyzhou.movieme.ui.base.MvpPresenter;
-import com.johnnyzhou.movieme.ui.base.MvpView;
-
-import rx.Observable;
+import com.johnnyzhou.movieme.ui.common.MvpPresenter;
+import com.johnnyzhou.movieme.ui.common.MvpView;
 
 public interface PersonDetailContract {
     interface View extends MvpView {
-        void showPerson(DetailPerson person);
+        void showPerson(PersonDetail person);
 
         void showLoading(boolean show);
 
