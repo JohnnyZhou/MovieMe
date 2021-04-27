@@ -1,6 +1,6 @@
 package com.johnnyzhou.movieme.di.module;
 
-import com.facebook.stetho.okhttp.StethoInterceptor;
+//import com.facebook.stetho.okhttp.StethoInterceptor;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.johnnyzhou.movieme.BuildConfig;
@@ -86,8 +86,8 @@ public class ApiModule {
 
         okHttpClient.interceptors().add(interceptor);
 
-        if (BuildConfig.DEBUG)
-            okHttpClient.networkInterceptors().add(new StethoInterceptor());
+//        if (BuildConfig.DEBUG)
+//            okHttpClient.networkInterceptors().add(new StethoInterceptor());
 
         return okHttpClient;
     }

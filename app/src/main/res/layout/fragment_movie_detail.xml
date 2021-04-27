@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <android.support.design.widget.CollapsingToolbarLayout
+        <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collapsingToolbarLayout"
             android:layout_width="match_parent"
             android:layout_height="280dp"
@@ -27,6 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
+                android:importantForAccessibility="no"
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="pin" />
 
@@ -34,17 +35,17 @@
                 android:id="@+id/toolbar"
                 layout="@layout/toolbar_detail"
                 android:fitsSystemWindows="true" />
-        </android.support.design.widget.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
-    <android.support.v4.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
+    <androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -66,8 +67,8 @@
                     android:id="@+id/posterImageView"
                     android:layout_width="80dp"
                     android:layout_height="120dp"
-                    android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
                     android:scaleType="fitXY" />
 
                 <TextView
@@ -98,8 +99,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:paddingLeft="15dp"
-                android:paddingRight="15dp"
                 android:paddingTop="15dp"
+                android:paddingRight="15dp"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <include
@@ -110,5 +111,5 @@
                 android:layout_margin="15dp" />
         </RelativeLayout>
 
-    </android.support.v4.widget.NestedScrollView>
-</android.support.design.widget.CoordinatorLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

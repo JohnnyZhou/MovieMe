@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/detailCardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/detailCardView"
     android:layout_gravity="center"
     android:layout_margin="8dp"
     card_view:cardCornerRadius="4dp">
@@ -112,4 +112,4 @@
             tools:text="English" />
 
     </RelativeLayout>
-</android.support.v7.widget.CardView>
+</androidx.cardview.widget.CardView>

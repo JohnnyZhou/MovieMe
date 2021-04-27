@@ -8,19 +8,19 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
 
-    <DrawerLayout
+    <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawerLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-        <!-- main content -->
+<!--        &lt;!&ndash; main content &ndash;&gt;-->
         <FrameLayout
             android:id="@+id/contentContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <!-- navigation drawer -->
+<!--        &lt;!&ndash; navigation drawer &ndash;&gt;-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/drawerRecycler"
             android:layout_width="240dp"
@@ -29,5 +29,5 @@
             android:background="@color/drawer_background"
             android:scrollbars="vertical" />
 
-    </DrawerLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
 </LinearLayout>

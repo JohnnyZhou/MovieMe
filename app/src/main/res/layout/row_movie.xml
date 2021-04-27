@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,7 +8,7 @@
     android:layout_margin="4dp"
     card_view:cardCornerRadius="4dp">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"
@@ -28,29 +28,29 @@
             android:layout_marginLeft="15dp"
             android:layout_toRightOf="@id/posterImageView"
             android:maxLines="1"
-            tools:text="Batman: The Dark Knight"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:text="Batman: The Dark Knight" />
 
         <TextView
             android:id="@+id/yearTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/movieTitleTextView"
             android:layout_below="@+id/movieTitleTextView"
+            android:layout_alignLeft="@id/movieTitleTextView"
             android:layout_marginTop="5dp"
-            tools:text="2008"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textStyle="italic" />
+            android:textStyle="italic"
+            tools:text="2008" />
 
         <TextView
             android:id="@+id/summaryTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/movieTitleTextView"
             android:layout_below="@id/yearTextView"
+            android:layout_alignLeft="@id/movieTitleTextView"
             android:layout_marginTop="10dp"
             android:ellipsize="end"
             android:maxLines="4"
             tools:text="When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, the caped crusader must come to terms with one of the greatest psychological tests of his ability to fight injustice." />
     </RelativeLayout>
-</android.support.v7.widget.CardView>
+</androidx.cardview.widget.CardView>

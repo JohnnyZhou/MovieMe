@@ -72,7 +72,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        setSupportActionBar(toolbar);
+//        setSupportActionBar(toolbar);
 
 //        ActionBar actionBar = getSupportActionBar();
 //        if (actionBar != null)
@@ -108,9 +108,9 @@ public class MainActivity extends BaseActivity {
         } else if (currentFragment == PEOPLE_FRAGMENT) {
             toolbar.setTitle("People");
             if (fm.findFragmentByTag(TAG_PERSON_LIST) == null) {
-                fm.beginTransaction()
-                        .replace(R.id.contentContainer, personListFragment, TAG_PERSON_LIST)
-                        .commit();
+//                fm.beginTransaction()
+//                        .replace(R.id.contentContainer, personListFragment, TAG_PERSON_LIST)
+//                        .commit();
             }
         }
     }
