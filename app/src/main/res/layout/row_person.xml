@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -7,11 +7,11 @@
     android:layout_margin="4dp"
     card_view:cardCornerRadius="4dp">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:background="?attr/selectableItemBackground">
+        android:background="?attr/selectableItemBackground"
+        android:padding="10dp">
 
         <ImageView
             android:id="@+id/profileImageView"
@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/profileImageView"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_toRightOf="@id/profileImageView"
             android:text="Johnny Depp"
             android:textStyle="bold" />
@@ -33,11 +33,11 @@
             android:id="@+id/knownForTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/nameTextView"
             android:layout_alignStart="@id/nameTextView"
+            android:layout_alignLeft="@id/nameTextView"
             android:layout_centerVertical="true"
             android:ellipsize="end"
             android:maxLines="4"
             android:text="Known for: Batman, Pirates, Saw" />
     </RelativeLayout>
-</android.support.v7.widget.CardView>
+</androidx.cardview.widget.CardView>

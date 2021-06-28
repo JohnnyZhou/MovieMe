@@ -20,19 +20,19 @@ public class MovieApi {
     }
 
     public Observable<MovieListResponse> getPopularMovies() {
-        return movieService.popularMovies();
+        return movieService.getPopularMovies();
     }
 
     public Observable<MovieListResponse> searchMovie(String movieName) {
-        return movieService.searchMovie(movieName);
+        return movieService.getMovieByQuery(movieName);
     }
 
     public Observable<PersonListResponse> getPopularPeople() {
-        return movieService.popularPeople();
+        return movieService.getPopularPeople();
     }
 
     public Observable<PersonListResponse> searchPerson(String personName) {
-        return movieService.searchPerson(personName);
+        return movieService.getPersonByQuery(personName);
     }
 
     public Observable<MovieDetail> getMovie(String movieId) {

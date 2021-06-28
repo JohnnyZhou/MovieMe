@@ -25,8 +25,7 @@ public class MovieListPresenter implements MovieListContract.Presenter<MovieList
 
     private static MovieListContract.View emptyView = new MovieListContract.View() {
         @Override
-        public void showMovies(List<Movie> movies) {
-            // Do nothing
+        public void showMovies(List<Movie> movies) { // Do nothing
         }
 
         @Override

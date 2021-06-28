@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
@@ -74,9 +75,9 @@ public class MainActivity extends BaseActivity {
 
 //        setSupportActionBar(toolbar);
 
-//        ActionBar actionBar = getSupportActionBar();
-//        if (actionBar != null)
-//            actionBar.setDisplayShowTitleEnabled(false);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null)
+            actionBar.setDisplayShowTitleEnabled(false);
 
         if (savedInstanceState != null) {
             currentFragment = savedInstanceState.getInt(KEY_CURRENT_FRAGMENT);
@@ -108,9 +109,9 @@ public class MainActivity extends BaseActivity {
         } else if (currentFragment == PEOPLE_FRAGMENT) {
             toolbar.setTitle("People");
             if (fm.findFragmentByTag(TAG_PERSON_LIST) == null) {
-//                fm.beginTransaction()
-//                        .replace(R.id.contentContainer, personListFragment, TAG_PERSON_LIST)
-//                        .commit();
+                fm.beginTransaction()
+                        .replace(R.id.contentContainer, personListFragment, TAG_PERSON_LIST)
+                        .commit();
             }
         }
     }
@@ -152,7 +153,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void resetSearchView() {
-        MenuItemCompat.collapseActionView(searchItem);
+//        MenuItemCompat.collapseActionView(searchItem);
         currentQuery = null;
     }
 

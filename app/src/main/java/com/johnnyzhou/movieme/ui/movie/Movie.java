@@ -1,7 +1,7 @@
 package com.johnnyzhou.movieme.ui.movie;
 
 import com.google.gson.annotations.SerializedName;
-import com.johnnyzhou.movieme.util.DateUtil;
+import com.johnnyzhou.movieme.util.DateUtils;
 import com.johnnyzhou.movieme.util.NetworkUtil;
 
 public class Movie {
@@ -37,6 +37,6 @@ public class Movie {
     }
 
     public String getReleaseDate() {
-        return DateUtil.convertDateFormat(releaseDate);
+        return DateUtils.Companion.convertDateFormat(releaseDate);
     }
 }

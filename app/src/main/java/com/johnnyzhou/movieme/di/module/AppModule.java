@@ -4,7 +4,7 @@ import android.app.Application;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.johnnyzhou.movieme.MovieMeApp;
+import com.johnnyzhou.movieme.MovieMeApplication;
 
 import java.util.Calendar;
 
@@ -24,7 +24,7 @@ public class AppModule {
     public static final String IO_THREAD = "ioThread";
     private final Application movieMeApp;
 
-    public AppModule(MovieMeApp movieMeApp) {
+    public AppModule(MovieMeApplication movieMeApp) {
         this.movieMeApp = movieMeApp;
     }
 

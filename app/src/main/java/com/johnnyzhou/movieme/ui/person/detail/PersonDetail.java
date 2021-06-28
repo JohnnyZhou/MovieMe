@@ -1,7 +1,7 @@
 package com.johnnyzhou.movieme.ui.person.detail;
 
 import com.johnnyzhou.movieme.ui.person.Person;
-import com.johnnyzhou.movieme.util.DateUtil;
+import com.johnnyzhou.movieme.util.DateUtils;
 
 public class PersonDetail extends Person {
     private static final String PROFILE_BASE_PATH = "http://image.tmdb.org/t/p/h632";
@@ -25,6 +25,6 @@ public class PersonDetail extends Person {
         if (birthday == null || birthday.isEmpty())
             return null;
 
-        return "Date of Birth: " + DateUtil.convertDateFormat(birthday);
+        return "Date of Birth: " + DateUtils.Companion.convertDateFormat(birthday);
     }
 }
