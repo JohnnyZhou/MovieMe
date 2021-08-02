@@ -4,59 +4,54 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.johnnyzhou.movieme.R
+import com.johnnyzhou.movieme.databinding.RowMovieBinding
 import com.johnnyzhou.movieme.ui.movie.Movie
-import java.io.FilterInputStream
-import javax.inject.Inject
 
-class MovieListAdapter @Inject constructor(
-    private val context: Context,
-    private val movieList: List<Movie>
-) :
+class MovieListAdapter(private val context: Context) :
     RecyclerView.Adapter<MovieListAdapter.ViewHolder>() {
+
+    private var movieList: MutableList<Movie> = mutableListOf()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view: View =
-            LayoutInflater.from(parent.context).inflate(R.layout.row_movie, parent, false)
-        return ViewHolder(view)
+        val binding = RowMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val movie = movieList[position]
-        Glide.with(context)
-            .load(movie.posterUrl)
-            .into(holder.posterImageView)
-        holder.titleTextView!!.text = movie.title
-        holder.yearTextView!!.text = movie.releaseDate
-        holder.summaryTextView!!.text = movie.summary
+        holder.onBind(context, movieList[position])
     }
 
-    override fun getItemCount(): Int {
-        return movieList.size
+    override fun getItemCount() = movieList.size
+
+    fun setMovies(movies: List<Movie>) {
+        movieList.clear()
+        movieList.addAll(movies)
+        notifyDataSetChanged()
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
-//        @Bind(R.id.posterImageView)
-        var posterImageView: ImageView? = null
+    class ViewHolder(private val itemBinding: RowMovieBinding) :
+        RecyclerView.ViewHolder(itemBinding.root), View.OnClickListener {
 
-//        @Bind(R.id.movieTitleTextView)
-        var titleTextView: TextView? = null
-
-//        @Bind(R.id.yearTextView)
-        var yearTextView: TextView? = null
-
-//        @Bind(R.id.summaryTextView)
-        var summaryTextView: TextView? = null
+        init {
+            itemView.setOnClickListener(this)
+        }
 
         override fun onClick(v: View) {
 //            EventBus.getDefault().post(MovieListClickEvent(adapterPosition))
         }
 
-        init {
-            itemView.setOnClickListener(this)
+        fun onBind(context: Context, movie: Movie) {
+            with(itemBinding) {
+                Glide.with(context) // inject in
+                    .load(movie.posterUrl)
+                    .into(posterImageView)
+
+                movieTitleTextView.text = movie.title
+                yearTextView.text = movie.releaseDate
+                summaryTextView.text = movie.summary
+            }
         }
     }
 }

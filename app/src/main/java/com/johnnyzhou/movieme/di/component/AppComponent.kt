@@ -4,6 +4,7 @@ import android.app.Application
 import com.johnnyzhou.movieme.MovieMeApplication
 import com.johnnyzhou.movieme.di.module.ApiModule
 import com.johnnyzhou.movieme.di.module.AppModule
+import com.johnnyzhou.movieme.network.MovieService
 import dagger.Component
 import javax.inject.Singleton
 
@@ -13,4 +14,6 @@ interface AppComponent {
     fun inject(application: MovieMeApplication)
 
     fun application(): Application
+
+    val movieService: MovieService
 }

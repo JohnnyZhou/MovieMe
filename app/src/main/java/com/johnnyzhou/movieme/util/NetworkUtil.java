@@ -2,7 +2,7 @@ package com.johnnyzhou.movieme.util;
 
 public class NetworkUtil {
     public static final String API_KEY = "42af06c42da2647304c1037af14aea64";
-    public static final String API_URL = "http://api.themoviedb.org/3/";
+    public static final String API_URL = "https://api.themoviedb.org/3/";
     public static final String API_HOST_NAME = "api.themoviedb.org";
 
     public static final String PROFILE_BASE_PATH = "http://image.tmdb.org/t/p/w185";

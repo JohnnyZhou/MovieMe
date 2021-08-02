@@ -2,10 +2,11 @@ package com.johnnyzhou.movieme.ui.movie.detail
 
 import android.graphics.Bitmap
 import com.johnnyzhou.movieme.ui.movie.Movie
+import kotlinx.serialization.SerialName
 import java.text.NumberFormat
 
 class MovieDetail : Movie() {
-    //    @SerializedName("spoken_languages")
+    @SerialName("spoken_languages")
     private val languages: List<Language>? = null
     private val genres: List<Genre>? = null
     val tagline: String? = null

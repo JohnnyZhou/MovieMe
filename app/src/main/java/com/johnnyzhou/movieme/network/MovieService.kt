@@ -9,8 +9,9 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MovieService {
-    @GET("discover/movie?sort_by=popularity.desc")
-    suspend fun getPopularMovies(): MovieListResponse // TODO, here too
+    @GET("discover/movie?sort_by=popularity.desc&api_key=42af06c42da2647304c1037af14aea64")
+//    @GET("movie/550?api_key=42af06c42da2647304c1037af14aea64")
+    suspend fun getPopularMovies(): MovieListResponse
 
     @GET("person/popular?sort_by=popularity.desc")
     suspend fun getPopularPeople(): PersonListResponse // TODO, should this be nullable?

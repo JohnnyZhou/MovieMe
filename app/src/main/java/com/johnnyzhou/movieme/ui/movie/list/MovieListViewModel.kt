@@ -5,23 +5,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.johnnyzhou.movieme.business.GetMovieUseCase
-import com.johnnyzhou.movieme.business.GetMovieUserCaseImpl
+import com.johnnyzhou.movieme.ui.common.UiState
 import com.johnnyzhou.movieme.ui.movie.Movie
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MovieListViewModel : ViewModel() {
-    sealed class UiState {
-        object Error : UiState()
-        object Loading : UiState()
-        object Success : UiState()
-    }
-
     private val mutableUiState = MutableLiveData<UiState>()
     private val mutableMovieLiveData = MutableLiveData<List<Movie>>()
-
     val uiState: LiveData<UiState> = mutableUiState
     val movieList: LiveData<List<Movie>> = mutableMovieLiveData
-
 
     lateinit var getMovieUseCase: GetMovieUseCase
 
@@ -29,16 +23,22 @@ class MovieListViewModel : ViewModel() {
     fun getMovieList() {
         mutableUiState.value = UiState.Loading
         viewModelScope.launch {
-//            val movies = getMovieUseCase.getPopularMovies()
-//            mutableMovieLiveData.postValue(movies)
+            try {
+                val movies = getMovieUseCase.getPopularMovies()
+                mutableUiState.postValue(UiState.Success)
+                mutableMovieLiveData.postValue(movies)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                mutableUiState.postValue(UiState.Error)
+            }
+
         }
     }
 
+//    private suspend fun getPopularMovies() {
+//    }
+
     fun searchMovie(query: String?) {
-
-    }
-
-    fun getPopularMovies() {
 
     }
 }
