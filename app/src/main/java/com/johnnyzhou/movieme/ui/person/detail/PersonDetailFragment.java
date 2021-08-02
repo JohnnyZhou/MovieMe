@@ -20,25 +20,22 @@ import com.johnnyzhou.movieme.ui.common.BaseFragment;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-
 public class PersonDetailFragment extends BaseFragment implements PersonDetailContract.View {
     private static final String ARG_PERSON_ID = "person_id";
 
-    @Bind(R.id.toolbar)
+//    @Bind(R.id.toolbar)
     Toolbar toolbar;
-    @Bind(R.id.backdropImageView)
+//    @Bind(R.id.backdropImageView)
     ImageView backdropImageView;
-    @Bind(R.id.movieDetailProgressBar)
+//    @Bind(R.id.movieDetailProgressBar)
     ProgressBar progressBar;
-    @Bind(R.id.collapsingToolbarLayout)
+//    @Bind(R.id.collapsingToolbarLayout)
     CollapsingToolbarLayout collapsingToolbar;
-    @Bind(R.id.overviewTextView)
+//    @Bind(R.id.overviewTextView)
     TextView overview;
-    @Bind(R.id.errorTextView)
+//    @Bind(R.id.errorTextView)
     TextView errorTextView;
-    @Bind(R.id.dobTextView)
+//    @Bind(R.id.dobTextView)
     TextView dobTextView;
 
     @Inject
@@ -68,10 +65,10 @@ public class PersonDetailFragment extends BaseFragment implements PersonDetailCo
     }
 
     private void initialiseInjectors() {
-        DaggerFragmentComponent.builder()
-                .appComponent(getAppComponent())
-                .build()
-                .inject(this);
+//        DaggerFragmentComponent.builder()
+//                .appComponent(getAppComponent())
+//                .build()
+//                .inject(this);
     }
 
     @Override
@@ -84,7 +81,6 @@ public class PersonDetailFragment extends BaseFragment implements PersonDetailCo
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
         setupToolbar();
     }
 

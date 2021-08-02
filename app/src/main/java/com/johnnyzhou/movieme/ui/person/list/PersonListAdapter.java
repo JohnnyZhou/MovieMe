@@ -17,10 +17,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import de.greenrobot.event.EventBus;
-
 public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.ViewHolder> {
     private List<Person> people;
     private Context context;
@@ -55,22 +51,22 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.Vi
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        @Bind(R.id.nameTextView)
+//        @Bind(R.id.nameTextView)
         TextView nameTextView;
-        @Bind(R.id.profileImageView)
+//        @Bind(R.id.profileImageView)
         ImageView profileImageView;
-        @Bind(R.id.knownForTextView)
+//        @Bind(R.id.knownForTextView)
         TextView knownForTextView;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
+//            ButterKnife.bind(this, itemView);
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            EventBus.getDefault().post(new PersonListClickEvent(getAdapterPosition()));
+//            EventBus.getDefault().post(new PersonListClickEvent(getAdapterPosition()));
         }
     }
 }

@@ -28,47 +28,44 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.johnnyzhou.movieme.R;
-import com.johnnyzhou.movieme.di.component.DaggerFragmentComponent;
 import com.johnnyzhou.movieme.ui.common.BaseActivity;
 import com.johnnyzhou.movieme.ui.common.BaseFragment;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import timber.log.Timber;
 
 public class MovieDetailFragment extends BaseFragment implements MovieDetailContract.View {
 
     private static final String ARG_MOVIE_ID = "movie_id";
 
-    @Bind(R.id.collapsingToolbarLayout)
+//    @Bind(R.id.collapsingToolbarLayout)
     CollapsingToolbarLayout collapsingToolbar;
-    @Bind(R.id.toolbar)
+//    @Bind(R.id.toolbar)
     Toolbar toolbar;
-    @Bind(R.id.runningTimeTextView)
+//    @Bind(R.id.runningTimeTextView)
     TextView runningTimeTextView;
-    @Bind(R.id.movieDetailProgressBar)
+//    @Bind(R.id.movieDetailProgressBar)
     ProgressBar progressBar;
-    @Bind(R.id.backdropImageView)
+//    @Bind(R.id.backdropImageView)
     ImageView backdropImageView;
-    @Bind(R.id.taglineSection)
+//    @Bind(R.id.taglineSection)
     RelativeLayout taglineSection;
-    @Bind(R.id.releasedTextView)
+//    @Bind(R.id.releasedTextView)
     TextView releasedTextView;
-    @Bind(R.id.languageTextView)
+//    @Bind(R.id.languageTextView)
     TextView languageTextView;
-    @Bind(R.id.overviewTextView)
+//    @Bind(R.id.overviewTextView)
     TextView overviewTextView;
-    @Bind(R.id.posterImageView)
+//    @Bind(R.id.posterImageView)
     ImageView posterImageView;
-    @Bind(R.id.taglineTextView)
+//    @Bind(R.id.taglineTextView)
     TextView taglineTextView;
-    @Bind(R.id.detailCardView)
+//    @Bind(R.id.detailCardView)
     CardView detailCardView;
-    @Bind(R.id.genresTextView)
+//    @Bind(R.id.genresTextView)
     TextView genresTextView;
-    @Bind(R.id.budgetTextView)
+//    @Bind(R.id.budgetTextView)
     TextView budgetTextView;
 
     @Inject
@@ -98,10 +95,10 @@ public class MovieDetailFragment extends BaseFragment implements MovieDetailCont
     }
 
     private void initialiseInjectors() {
-        DaggerFragmentComponent.builder()
-                .appComponent(getAppComponent())
-                .build()
-                .inject(this);
+//        DaggerFragmentComponent.builder()
+//                .appComponent(getAppComponent())
+//                .build()
+//                .inject(this);
     }
 
     @Override
@@ -114,8 +111,6 @@ public class MovieDetailFragment extends BaseFragment implements MovieDetailCont
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        ButterKnife.bind(this, view);
         setupToolbar();
     }
 

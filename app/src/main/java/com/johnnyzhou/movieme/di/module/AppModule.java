@@ -13,7 +13,6 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import de.greenrobot.event.EventBus;
 import rx.Scheduler;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -34,11 +33,11 @@ public class AppModule {
         return PreferenceManager.getDefaultSharedPreferences(movieMeApp);
     }
 
-    @Singleton
-    @Provides
-    EventBus provideEventBus() {
-        return EventBus.getDefault();
-    }
+//    @Singleton
+//    @Provides
+//    EventBus provideEventBus() {
+//        return EventBus.getDefault();
+//    }
 
     @Singleton
     @Provides

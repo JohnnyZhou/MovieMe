@@ -54,6 +54,7 @@ dependencies {
     def kotlin_version = "1.4.31"
 
     // GOOGLE
+    implementation "androidx.activity:activity-ktx:$appcompat_version"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.5.0'
     implementation "androidx.appcompat:appcompat:$appcompat_version"
@@ -70,7 +71,7 @@ dependencies {
 
     // NETWORK
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit:converter-moshi:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
 
     implementation 'com.github.bumptech.glide:glide:3.7.0'
 

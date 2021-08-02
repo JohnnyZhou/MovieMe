@@ -8,14 +8,10 @@ import android.view.ViewGroup
 import androidx.annotation.UiThread
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import butterknife.ButterKnife
 import com.johnnyzhou.movieme.databinding.FragmentMovieListBinding
-import com.johnnyzhou.movieme.di.component.DaggerFragmentComponent
 import com.johnnyzhou.movieme.ui.common.BaseFragment
 import com.johnnyzhou.movieme.ui.movie.Movie
 import com.johnnyzhou.movieme.ui.movie.detail.MovieDetailActivity
-import de.greenrobot.event.Subscribe
-import de.greenrobot.event.ThreadMode
 
 private const val KEY_LAST_QUERY = "last_query"
 
@@ -28,15 +24,19 @@ class MovieListFragment : BaseFragment(), MovieListContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        retainInstance = true
         initialiseDependencies()
+        viewModel.uiState.observe(this, {
+            setUiState(it)
+        })
     }
 
     private fun initialiseDependencies() {
-        DaggerFragmentComponent.builder()
-            .appComponent(appComponent)
-            .build()
-            .inject(this)
+//        DaggerFragmentComponent.builder()
+//            .appComponent(appComponent)
+//            .build()
+//            .inject(this)
+
+
     }
 
     override fun onCreateView(
@@ -49,7 +49,6 @@ class MovieListFragment : BaseFragment(), MovieListContract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        ButterKnife.bind(this, view)
         setupRecyclerView()
         if (savedInstanceState != null) currentQuery = savedInstanceState.getString(KEY_LAST_QUERY)
 
@@ -58,9 +57,35 @@ class MovieListFragment : BaseFragment(), MovieListContract.View {
 
     private fun setupRecyclerView() {
         val emptyList: List<Movie> = emptyList()
-        val emptyAdapter = MovieListAdapter(context, emptyList)
+        val emptyAdapter = MovieListAdapter(requireContext(), emptyList)
         binding.movieRecyclerView.adapter = emptyAdapter
         binding.movieRecyclerView.layoutManager = LinearLayoutManager(context)
+    }
+
+    private fun setUiState(uiState: MovieListViewModel.UiState) {
+        when (uiState) {
+            MovieListViewModel.UiState.Error -> showErrorState()
+            MovieListViewModel.UiState.Loading -> showLoadingState()
+            MovieListViewModel.UiState.Success -> showSuccessState()
+        }
+    }
+
+    private fun showLoadingState() {
+        binding.movieProgressBar.visibility = View.VISIBLE
+        binding.errorTextView.visibility = View.GONE
+    }
+
+    private fun showErrorState() {
+        binding.movieRecyclerView.visibility = View.GONE
+        binding.movieProgressBar.visibility = View.GONE
+        binding.errorTextView.visibility = View.VISIBLE
+        binding.errorTextView.text = "Error"
+    }
+
+    private fun showSuccessState() {
+        binding.movieRecyclerView.visibility = View.VISIBLE
+        binding.movieProgressBar.visibility = View.GONE
+        binding.errorTextView.visibility = View.GONE
     }
 
     fun onMovieClick(movieClick: MovieListClickEvent) {
@@ -82,7 +107,7 @@ class MovieListFragment : BaseFragment(), MovieListContract.View {
     @UiThread
     override fun showMovies(movies: List<Movie>) {
         this.movies = movies
-        binding.movieRecyclerView.swapAdapter(MovieListAdapter(context, movies), true)
+        binding.movieRecyclerView.swapAdapter(MovieListAdapter(requireContext(), movies), true)
         binding.movieRecyclerView.visibility = View.VISIBLE
     }
 

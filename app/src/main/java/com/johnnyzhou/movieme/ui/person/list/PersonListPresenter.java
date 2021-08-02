@@ -17,7 +17,7 @@ import rx.subscriptions.CompositeSubscription;
 
 public class PersonListPresenter implements PersonListContract.Presenter<PersonListContract.View> {
     private Map<String, List<Person>> currentQueryMap;
-    private PersonListInteractor interactor;
+//    private PersonListInteractor interactor;
     private CompositeSubscription subscriptions;
     private PersonListContract.View view;
     private List<Person> popularPeople;
@@ -40,16 +40,16 @@ public class PersonListPresenter implements PersonListContract.Presenter<PersonL
         }
     };
 
-    @Inject
-    public PersonListPresenter(PersonListInteractor interactor,
-                               @Named(AppModule.MAIN_THREAD) Scheduler mainThread) {
-
-        subscriptions = new CompositeSubscription();
-        this.interactor = interactor;
-        this.mainThread = mainThread;
-        currentQueryMap = new HashMap<>();
-        view = emptyView;
-    }
+//    @Inject
+//    public PersonListPresenter(PersonListInteractor interactor,
+//                               @Named(AppModule.MAIN_THREAD) Scheduler mainThread) {
+//
+//        subscriptions = new CompositeSubscription();
+//        this.interactor = interactor;
+//        this.mainThread = mainThread;
+//        currentQueryMap = new HashMap<>();
+//        view = emptyView;
+//    }
 
     @Override
     public void getPopularPeople() {
@@ -60,20 +60,20 @@ public class PersonListPresenter implements PersonListContract.Presenter<PersonL
             return;
         }
 
-        interactor.getPopularPeople()
-                .observeOn(mainThread)
-                .subscribe(new Action1<List<Person>>() {
-                    @Override
-                    public void call(List<Person> people) {
-                        popularPeople = people;
-                        showPeople(people);
-                    }
-                }, new Action1<Throwable>() {
-                    @Override
-                    public void call(Throwable throwable) {
-                        showError(NetworkUtil.NETWORK_ERROR_MSG);
-                    }
-                });
+//        interactor.getPopularPeople()
+//                .observeOn(mainThread)
+//                .subscribe(new Action1<List<Person>>() {
+//                    @Override
+//                    public void call(List<Person> people) {
+//                        popularPeople = people;
+//                        showPeople(people);
+//                    }
+//                }, new Action1<Throwable>() {
+//                    @Override
+//                    public void call(Throwable throwable) {
+//                        showError(NetworkUtil.NETWORK_ERROR_MSG);
+//                    }
+//                });
     }
 
     @Override
@@ -85,20 +85,20 @@ public class PersonListPresenter implements PersonListContract.Presenter<PersonL
             return;
         }
 
-        interactor.searchPeople(query)
-                .observeOn(mainThread)
-                .subscribe(new Action1<List<Person>>() {
-                    @Override
-                    public void call(List<Person> searchResult) {
-                        currentQueryMap.put(query, searchResult);
-                        showPeople(searchResult);
-                    }
-                }, new Action1<Throwable>() {
-                    @Override
-                    public void call(Throwable throwable) {
-                        showError(NetworkUtil.NETWORK_ERROR_MSG);
-                    }
-                });
+//        interactor.searchPeople(query)
+//                .observeOn(mainThread)
+//                .subscribe(new Action1<List<Person>>() {
+//                    @Override
+//                    public void call(List<Person> searchResult) {
+//                        currentQueryMap.put(query, searchResult);
+//                        showPeople(searchResult);
+//                    }
+//                }, new Action1<Throwable>() {
+//                    @Override
+//                    public void call(Throwable throwable) {
+//                        showError(NetworkUtil.NETWORK_ERROR_MSG);
+//                    }
+//                });
     }
 
     private void showPeople(List<Person> people) {

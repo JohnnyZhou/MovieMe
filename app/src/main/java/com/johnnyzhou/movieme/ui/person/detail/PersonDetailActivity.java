@@ -11,8 +11,6 @@ import com.johnnyzhou.movieme.ui.common.BaseActivity;
 
 import javax.inject.Inject;
 
-import butterknife.ButterKnife;
-
 public class PersonDetailActivity extends BaseActivity {
     private static final String TAG_PERSON_DETAIL = "person_detail";
     public static final String EXTRA_PERSON_ID = "com.johnnyzhou.movieme.person_id";
@@ -24,7 +22,6 @@ public class PersonDetailActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_person);
-        ButterKnife.bind(this);
         initialiseInjections();
         setupFragment();
     }

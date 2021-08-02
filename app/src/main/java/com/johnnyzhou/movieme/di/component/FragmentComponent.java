@@ -14,9 +14,9 @@ import dagger.Component;
 public interface FragmentComponent {
     void inject(MovieListFragment fragment);
 
-    void inject(MovieDetailFragment fragment);
+//    void inject(MovieDetailFragment fragment);
 
     void inject(PersonListFragment fragment);
 
-    void inject(PersonDetailFragment fragment);
+//    void inject(PersonDetailFragment fragment);
 }

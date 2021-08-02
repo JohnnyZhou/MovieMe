@@ -7,7 +7,7 @@ import rx.functions.Action1;
 import rx.subscriptions.CompositeSubscription;
 
 public class PersonDetailPresenter implements PersonDetailContract.Presenter<PersonDetailContract.View> {
-    private PersonDetailInteractor interactor;
+//    private PersonDetailInteractor interactor;
     private CompositeSubscription subscriptions;
     private PersonDetailContract.View view;
     private Scheduler mainThread;
@@ -30,12 +30,12 @@ public class PersonDetailPresenter implements PersonDetailContract.Presenter<Per
         }
     };
 
-    public PersonDetailPresenter(PersonDetailInteractor interactor, Scheduler mainThread) {
-        subscriptions = new CompositeSubscription();
-        this.interactor = interactor;
-        this.mainThread = mainThread;
-        view = emptyView;
-    }
+//    public PersonDetailPresenter(PersonDetailInteractor interactor, Scheduler mainThread) {
+//        subscriptions = new CompositeSubscription();
+//        this.interactor = interactor;
+//        this.mainThread = mainThread;
+//        view = emptyView;
+//    }
 
     @Override
     public void getPerson(String personId) {
@@ -46,20 +46,20 @@ public class PersonDetailPresenter implements PersonDetailContract.Presenter<Per
             return;
         }
 
-        interactor.getPerson(personId)
-                .observeOn(mainThread)
-                .subscribe(new Action1<PersonDetail>() {
-                    @Override
-                    public void call(PersonDetail person) {
-                        PersonDetailPresenter.this.person = person;
-                        showPerson(person);
-                    }
-                }, new Action1<Throwable>() {
-                    @Override
-                    public void call(Throwable throwable) {
-                        showError(NetworkUtil.NETWORK_ERROR_MSG);
-                    }
-                });
+//        interactor.getPerson(personId)
+//                .observeOn(mainThread)
+//                .subscribe(new Action1<PersonDetail>() {
+//                    @Override
+//                    public void call(PersonDetail person) {
+//                        PersonDetailPresenter.this.person = person;
+//                        showPerson(person);
+//                    }
+//                }, new Action1<Throwable>() {
+//                    @Override
+//                    public void call(Throwable throwable) {
+//                        showError(NetworkUtil.NETWORK_ERROR_MSG);
+//                    }
+//                });
     }
 
     private void showPerson(PersonDetail person) {

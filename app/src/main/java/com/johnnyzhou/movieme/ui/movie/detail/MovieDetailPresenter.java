@@ -1,18 +1,15 @@
 package com.johnnyzhou.movieme.ui.movie.detail;
 
 import com.johnnyzhou.movieme.di.module.AppModule;
-import com.johnnyzhou.movieme.util.NetworkUtil;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import rx.Scheduler;
-import rx.functions.Action1;
 import rx.subscriptions.CompositeSubscription;
 
 public class MovieDetailPresenter implements MovieDetailContract.Presenter<MovieDetailContract.View> {
     private CompositeSubscription subscriptions;
-    private MovieDetailInteractor interactor;
     private MovieDetailContract.View view;
     private Scheduler mainThread;
     private MovieDetail movie;
@@ -35,11 +32,9 @@ public class MovieDetailPresenter implements MovieDetailContract.Presenter<Movie
     };
 
     @Inject
-    public MovieDetailPresenter(MovieDetailInteractor interactor,
-                                @Named(AppModule.MAIN_THREAD) Scheduler mainThread) {
+    public MovieDetailPresenter(@Named(AppModule.MAIN_THREAD) Scheduler mainThread) {
 
         subscriptions = new CompositeSubscription();
-        this.interactor = interactor;
         this.mainThread = mainThread;
         view = emptyView;
     }
@@ -52,20 +47,20 @@ public class MovieDetailPresenter implements MovieDetailContract.Presenter<Movie
             return;
         }
 
-        interactor.getMovie(movieId)
-                .observeOn(mainThread)
-                .subscribe(new Action1<MovieDetail>() {
-                    @Override
-                    public void call(MovieDetail movie) {
-                        MovieDetailPresenter.this.movie = movie;
-                        showMovie(movie);
-                    }
-                }, new Action1<Throwable>() {
-                    @Override
-                    public void call(Throwable throwable) {
-                        showError(NetworkUtil.NETWORK_ERROR_MSG);
-                    }
-                });
+//        interactor.getMovie(movieId)
+//                .observeOn(mainThread)
+//                .subscribe(new Action1<MovieDetail>() {
+//                    @Override
+//                    public void call(MovieDetail movie) {
+//                        MovieDetailPresenter.this.movie = movie;
+//                        showMovie(movie);
+//                    }
+//                }, new Action1<Throwable>() {
+//                    @Override
+//                    public void call(Throwable throwable) {
+//                        showError(NetworkUtil.NETWORK_ERROR_MSG);
+//                    }
+//                });
     }
 
     private void showMovie(MovieDetail movie) {

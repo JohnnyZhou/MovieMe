@@ -10,20 +10,20 @@ import retrofit2.http.Query
 
 interface MovieService {
     @GET("discover/movie?sort_by=popularity.desc")
-    suspend fun getPopularMovies(): MovieListResponse?
+    suspend fun getPopularMovies(): MovieListResponse // TODO, here too
 
     @GET("person/popular?sort_by=popularity.desc")
-    suspend fun getPopularPeople(): PersonListResponse?
+    suspend fun getPopularPeople(): PersonListResponse // TODO, should this be nullable?
 
     @GET("search/movie?")
-    suspend fun getMovieByQuery(@Query("query") movieName: String?): MovieListResponse?
+    suspend fun getMovieByQuery(@Query("query") movieName: String?): MovieListResponse
 
     @GET("search/person?")
-    suspend fun getPersonByQuery(@Query("query") personName: String?): PersonListResponse?
+    suspend fun getPersonByQuery(@Query("query") personName: String?): PersonListResponse
 
     @GET("movie/{id}?")
-    suspend fun getMovie(@Path("id") movieId: String?): MovieDetail?
+    suspend fun getMovie(@Path("id") movieId: String?): MovieDetail
 
     @GET("person/{id}?")
-    suspend fun getPerson(@Path("id") personId: String?): PersonDetail?
+    suspend fun getPerson(@Path("id") personId: String?): PersonDetail
 }

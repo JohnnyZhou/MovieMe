@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.johnnyzhou.movieme.R;
-import com.johnnyzhou.movieme.di.component.DaggerFragmentComponent;
 import com.johnnyzhou.movieme.ui.common.BaseFragment;
 import com.johnnyzhou.movieme.ui.person.Person;
 import com.johnnyzhou.movieme.ui.person.detail.PersonDetailActivity;
@@ -23,26 +22,15 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import de.greenrobot.event.EventBus;
-import de.greenrobot.event.Subscribe;
-import de.greenrobot.event.ThreadMode;
-
 public class PersonListFragment extends BaseFragment implements PersonListContract.View {
     private static final String KEY_LAST_QUERY = "last_query";
 
-    @Bind(R.id.movieRecyclerView)
+//    @Bind(R.id.movieRecyclerView)
     RecyclerView recyclerView;
-    @Bind(R.id.movieProgressBar)
+//    @Bind(R.id.movieProgressBar)
     ProgressBar progressBar;
-    @Bind(R.id.errorTextView)
+//    @Bind(R.id.errorTextView)
     TextView errorTextView;
-
-    @Inject
-    PersonListContract.Presenter<PersonListContract.View> presenter;
-    @Inject
-    EventBus bus;
 
     private List<Person> people;
     private String currentQuery;
@@ -57,15 +45,14 @@ public class PersonListFragment extends BaseFragment implements PersonListContra
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRetainInstance(true);
         initialiseInjectors();
     }
 
     private void initialiseInjectors() {
-        DaggerFragmentComponent.builder()
-                .appComponent(getAppComponent())
-                .build()
-                .inject(this);
+//        DaggerFragmentComponent.builder()
+//                .appComponent(getAppComponent())
+//                .build()
+//                .inject(this);
     }
 
     @Override
@@ -76,7 +63,6 @@ public class PersonListFragment extends BaseFragment implements PersonListContra
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
 
         setupRecyclerView();
 
@@ -91,23 +77,23 @@ public class PersonListFragment extends BaseFragment implements PersonListContra
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
-    @Subscribe(threadMode = ThreadMode.MainThread)
+//    @Subscribe(threadMode = ThreadMode.MainThread)
     public void onPersonClick(PersonListClickEvent personClick) {
         Intent intent = new Intent(getContext(), PersonDetailActivity.class);
         intent.putExtra(PersonDetailActivity.EXTRA_PERSON_ID, people.get(personClick.getPosition()).getId());
         startActivity(intent);
     }
 
-    @Subscribe
+//    @Subscribe
     public void showPopularPeople(ShowPopularPeople showPopularPeople) {
         currentQuery = null;
-        presenter.getPopularPeople();
+//        presenter.getPopularPeople();
     }
 
-    @Subscribe
+//    @Subscribe
     public void personSearch(PersonSearch personSearch) {
         currentQuery = personSearch.getQuery();
-        presenter.searchPeople(personSearch.getQuery());
+//        presenter.searchPeople(personSearch.getQuery());
     }
 
     @Override
@@ -136,14 +122,14 @@ public class PersonListFragment extends BaseFragment implements PersonListContra
     @Override
     public void onStart() {
         super.onStart();
-        bus.register(this);
-        presenter.bindView(this);
+//        bus.register(this);
+//        presenter.bindView(this);
 
-        if (currentQuery != null) {
-            presenter.searchPeople(currentQuery);
-        } else {
-            presenter.getPopularPeople();
-        }
+//        if (currentQuery != null) {
+//            presenter.searchPeople(currentQuery);
+//        } else {
+//            presenter.getPopularPeople();
+//        }
     }
 
     @Override
@@ -154,20 +140,19 @@ public class PersonListFragment extends BaseFragment implements PersonListContra
 
     @Override
     public void onStop() {
-        bus.unregister(this);
         super.onStop();
     }
 
     @Override
     public void onDestroyView() {
-        presenter.unbindView();
+//        presenter.unbindView();
         super.onDestroyView();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        presenter.onDestroy();
-        presenter = null;
+//        presenter.onDestroy();
+//        presenter = null;
     }
 }

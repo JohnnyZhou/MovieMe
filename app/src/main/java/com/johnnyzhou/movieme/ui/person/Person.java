@@ -1,6 +1,5 @@
 package com.johnnyzhou.movieme.ui.person;
 
-import com.google.gson.annotations.SerializedName;
 import com.johnnyzhou.movieme.ui.movie.Movie;
 import com.johnnyzhou.movieme.util.NetworkUtil;
 
@@ -9,9 +8,9 @@ import java.util.List;
 public class Person {
     private String id;
     private String name;
-    @SerializedName("known_for")
+//    @SerializedName("known_for")
     private List<Movie> knownFor;
-    @SerializedName("profile_path")
+//    @SerializedName("profile_path")
     private String imagePath;
 
     public String getName() {
