@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/movieListFragment">
+
+    <fragment
+        android:id="@+id/movieListFragment"
+        android:name="com.johnnyzhou.movieme.ui.movie.list.MovieListFragment"
+        android:label="MovieListFragment" />
+
+    <fragment
+        android:id="@+id/personListFragment"
+        android:name="com.johnnyzhou.movieme.ui.person.list.PersonListFragment"
+        android:label="PersonListFragment" />
+</navigation>

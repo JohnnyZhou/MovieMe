@@ -5,13 +5,14 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.GravityCompat
 import androidx.core.view.MenuItemCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.johnnyzhou.movieme.R
 import com.johnnyzhou.movieme.databinding.ActivityMainBinding
 import com.johnnyzhou.movieme.di.component.DaggerActivityComponent
@@ -20,6 +21,7 @@ import com.johnnyzhou.movieme.ui.common.BaseActivity
 import com.johnnyzhou.movieme.ui.drawer.DrawerItemClick
 import com.johnnyzhou.movieme.ui.movie.list.MovieListFragment
 import com.johnnyzhou.movieme.ui.person.list.PersonListFragment
+
 
 class MainActivity : BaseActivity() {
     lateinit var movieListFragment: MovieListFragment
@@ -42,6 +44,11 @@ class MainActivity : BaseActivity() {
             currentQuery = savedInstanceState.getString(KEY_LAST_QUERY)
         }
 
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
+
+        NavigationUI.setupWithNavController(binding.bottomNavigation, navController)
+
 //        getViewModelStore()
         initialiseInjectors()
         setupDrawer()
@@ -58,21 +65,21 @@ class MainActivity : BaseActivity() {
 
     private fun setupFragment() {
         movieListFragment = MovieListFragment.newInstance()
-        if (currentFragment == MOVIES_FRAGMENT) {
-            // TODO set toolbar title
-            if (supportFragmentManager.findFragmentByTag(TAG_MOVIE_LIST) == null) {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.contentContainer, movieListFragment, TAG_MOVIE_LIST)
-                    .commit()
-            }
-        } else if (currentFragment == PEOPLE_FRAGMENT) {
-            // TODO set toolbar title
-            if (supportFragmentManager.findFragmentByTag(TAG_PERSON_LIST) == null) {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.contentContainer, personListFragment, TAG_PERSON_LIST)
-                    .commit()
-            }
-        }
+//        if (currentFragment == MOVIES_FRAGMENT) {
+//            // TODO set toolbar title
+//            if (supportFragmentManager.findFragmentByTag(TAG_MOVIE_LIST) == null) {
+//                supportFragmentManager.beginTransaction()
+//                    .replace(R.id.contentContainer, movieListFragment, TAG_MOVIE_LIST)
+//                    .commit()
+//            }
+//        } else if (currentFragment == PEOPLE_FRAGMENT) {
+//            // TODO set toolbar title
+//            if (supportFragmentManager.findFragmentByTag(TAG_PERSON_LIST) == null) {
+//                supportFragmentManager.beginTransaction()
+//                    .replace(R.id.contentContainer, personListFragment, TAG_PERSON_LIST)
+//                    .commit()
+//            }
+//        }
     }
 
     private fun setupDrawer() {
@@ -98,7 +105,7 @@ class MainActivity : BaseActivity() {
 
     //    @Subscribe(threadMode = ThreadMode.MainThread)
     fun onDrawerItemClick(clickEvent: DrawerItemClick) {
-        binding.drawerLayout.closeDrawer(binding.drawerRecycler)
+//        binding.drawerLayout.closeDrawer(binding.drawerRecycler)
         if (clickEvent.position == DrawerItemClick.MOVIE_POSITION) {
             if (currentFragment != MOVIES_FRAGMENT) resetSearchView()
             currentFragment = MOVIES_FRAGMENT
@@ -116,40 +123,40 @@ class MainActivity : BaseActivity() {
     }
 
     override fun onBackPressed() {
-        val drawer = findViewById<View>(R.id.drawerLayout) as DrawerLayout
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START)
-        } else {
-            super.onBackPressed()
-        }
+//        val drawer = findViewById<View>(R.id.drawerLayout) as DrawerLayout
+//        if (drawer.isDrawerOpen(GravityCompat.START)) {
+//            drawer.closeDrawer(GravityCompat.START)
+//        } else {
+//            super.onBackPressed()
+//        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main, menu)
         searchItem = menu.findItem(R.id.action_search)
         // TODO, safe
-        val searchView = searchItem!!.actionView as SearchView
-        if (currentQuery != null) {
-            MenuItemCompat.expandActionView(searchItem)
-            searchView.setQuery(currentQuery, false)
-            searchView.clearFocus()
-            closeSoftKeyboard()
-        }
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String): Boolean {
-                if (currentFragment == MOVIES_FRAGMENT) {
-                } else if (currentFragment == PEOPLE_FRAGMENT) {
-                }
-                //                    bus.post(new PersonSearch(query));
-                closeSoftKeyboard()
-                currentQuery = query
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String): Boolean {
-                return false
-            }
-        })
+//        val searchView = searchItem!!.actionView as SearchView
+//        if (currentQuery != null) {
+//            MenuItemCompat.expandActionView(searchItem)
+//            searchView.setQuery(currentQuery, false)
+//            searchView.clearFocus()
+//            closeSoftKeyboard()
+//        }
+//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String): Boolean {
+//                if (currentFragment == MOVIES_FRAGMENT) {
+//                } else if (currentFragment == PEOPLE_FRAGMENT) {
+//                }
+//                //                    bus.post(new PersonSearch(query));
+//                closeSoftKeyboard()
+//                currentQuery = query
+//                return true
+//            }
+//
+//            override fun onQueryTextChange(newText: String): Boolean {
+//                return false
+//            }
+//        })
         MenuItemCompat.setOnActionExpandListener(
             searchItem,
             object : MenuItemCompat.OnActionExpandListener {

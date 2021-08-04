@@ -44,7 +44,7 @@ class MovieListAdapter(private val context: Context) :
 
         fun onBind(context: Context, movie: Movie) {
             with(itemBinding) {
-                Glide.with(context) // inject in
+                Glide.with(context) // TODO inject in
                     .load(movie.posterUrl)
                     .into(posterImageView)
 

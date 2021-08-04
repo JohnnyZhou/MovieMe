@@ -71,10 +71,10 @@ public class PersonListFragment extends BaseFragment implements PersonListContra
     }
 
     private void setupRecyclerView() {
-        List<Person> emptyList = Collections.emptyList();
-        PersonListAdapter dummyAdapter = new PersonListAdapter(getContext(), emptyList);
-        recyclerView.setAdapter(dummyAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+//        List<Person> emptyList = Collections.emptyList();
+//        PersonListAdapter dummyAdapter = new PersonListAdapter(getContext(), emptyList);
+//        recyclerView.setAdapter(dummyAdapter);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
 //    @Subscribe(threadMode = ThreadMode.MainThread)
