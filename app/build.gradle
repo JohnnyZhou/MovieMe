@@ -6,17 +6,25 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        release {
+        storeFile file('/Users/johnnyzhou/AndroidStudioProjects/MovieMe/movie_me_key_store')
+            storePassword 'helloworld'
+            keyAlias 'key0'
+            keyPassword 'helloworld'
+        }
+    }
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.johnnyzhou.movieme"
-        minSdkVersion 23
+        minSdkVersion 26
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -51,23 +59,26 @@ android {
 }
 
 dependencies {
-    def appcompat_version = "1.3.0"
+    implementation 'androidx.test.ext:junit:1.1.3'
+    implementation 'androidx.test:runner:1.4.0'
+    implementation 'androidx.test.espresso:espresso-core:3.4.0'
+    def appcompat_version = '1.3.1'
     def kotlin_version = "1.4.31"
 
     // GOOGLE
     implementation "androidx.activity:activity-ktx:$appcompat_version"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.5.0'
+    implementation 'androidx.core:core-ktx:1.6.0'
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation "androidx.recyclerview:recyclerview:1.2.1"
     implementation "androidx.cardview:cardview:1.0.0"
     implementation 'androidx.palette:palette-ktx:1.0.0'
-    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'com.google.android.material:material:1.4.0'
     implementation "androidx.drawerlayout:drawerlayout:1.1.1"
 
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1" // extract out
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.3.1"
-    implementation "androidx.fragment:fragment-ktx:1.3.5"
+    implementation 'androidx.fragment:fragment-ktx:1.3.6'
 //    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
 
     // NETWORK
@@ -82,8 +93,8 @@ dependencies {
     implementation 'io.reactivex:rxjava:1.0.14'
 
     // DEPENDENCY INJECTION
-    implementation 'com.google.dagger:dagger:2.0.1'
-    kapt 'com.google.dagger:dagger-compiler:2.0.1'
+    implementation 'com.google.dagger:dagger:2.37'
+    kapt 'com.google.dagger:dagger-compiler:2.30.1'
     implementation 'javax.annotation:javax.annotation-api:1.3.2'
 
     // NAVIGATION COMPONENT
@@ -95,16 +106,18 @@ dependencies {
     // DEBUGGING
 //    implementation 'com.facebook.stetho:stetho:1.2.0'
 //    implementation 'com.facebook.stetho:stetho-okhttp:1.2.0'
-    implementation 'com.jakewharton.timber:timber:4.1.0'
+    implementation 'com.jakewharton.timber:timber:5.0.1'
 //    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.3.1'
 //    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.3.1'
 
     // TESTING
     testImplementation 'junit:junit:4.13.2'
-//    androidTestCompile 'com.android.support:support-annotations:23.1.1'
-//    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
-//    androidTestCompile 'com.android.support.test.espresso:espresso-contrib:2.2.1'
-//    androidTestCompile 'com.android.support.test:runner:0.4.1'
-//    androidTestCompile 'com.android.support.test:rules:0.4.1'
     androidTestImplementation 'org.hamcrest:hamcrest-library:1.3'
+    androidTestImplementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    androidTestImplementation 'androidx.test:core:1.4.0'
+    androidTestImplementation 'androidx.test:core-ktx:1.4.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.ext:junit-ktx:1.1.3'
+    androidTestImplementation 'androidx.test:runner:1.4.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }

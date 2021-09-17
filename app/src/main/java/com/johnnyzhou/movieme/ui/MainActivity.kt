@@ -1,10 +1,13 @@
 package com.johnnyzhou.movieme.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.ViewTreeObserver
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.GravityCompat
 import androidx.core.view.MenuItemCompat
@@ -14,13 +17,19 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.johnnyzhou.movieme.R
+import com.johnnyzhou.movieme.business.GetMovieUseCase
 import com.johnnyzhou.movieme.databinding.ActivityMainBinding
 import com.johnnyzhou.movieme.di.component.DaggerActivityComponent
+import com.johnnyzhou.movieme.di.component.DaggerFragmentComponent
+import com.johnnyzhou.movieme.di.component.FragmentComponent
 import com.johnnyzhou.movieme.di.module.ActivityModule
 import com.johnnyzhou.movieme.ui.common.BaseActivity
 import com.johnnyzhou.movieme.ui.drawer.DrawerItemClick
+import com.johnnyzhou.movieme.ui.movie.Movie
+import com.johnnyzhou.movieme.ui.movie.detail.MovieDetail
 import com.johnnyzhou.movieme.ui.movie.list.MovieListFragment
 import com.johnnyzhou.movieme.ui.person.list.PersonListFragment
+import kotlinx.coroutines.*
 
 
 class MainActivity : BaseActivity() {
@@ -48,8 +57,30 @@ class MainActivity : BaseActivity() {
         val navController = navHostFragment.navController
 
         NavigationUI.setupWithNavController(binding.bottomNavigation, navController)
+        binding.bottomNavigation.setOnNavigationItemReselectedListener{
+            // do nothing
+        }
 
-//        getViewModelStore()
+        val one = GlobalScope.async(start = CoroutineStart.LAZY) {
+            withContext(Dispatchers.Main) {
+                Toast.makeText(this@MainActivity, "hello", Toast.LENGTH_LONG).show()
+                delay(1000)
+            }
+
+            "Johnny"
+        }
+
+        GlobalScope.launch {
+//            one.start()
+            coroutineContext
+            val result = one.await()
+            withContext(Dispatchers.Main) {
+                Toast.makeText(this@MainActivity, result, Toast.LENGTH_LONG).show()
+            }
+        }
+
+//        startActivity(Intent(this, MainActivity::class.java))
+//        viewModelStore
         initialiseInjectors()
         setupDrawer()
         setupFragment()
@@ -127,7 +158,7 @@ class MainActivity : BaseActivity() {
 //        if (drawer.isDrawerOpen(GravityCompat.START)) {
 //            drawer.closeDrawer(GravityCompat.START)
 //        } else {
-//            super.onBackPressed()
+            super.onBackPressed()
 //        }
     }
 

@@ -4,4 +4,8 @@
         <item name="android:background">@color/white</item>
         <item name="itemTextColor">@color/black</item>
     </style>
+
+    <style name="test">
+        <item name="android:background">@color/black</item>
+    </style>
 </resources>

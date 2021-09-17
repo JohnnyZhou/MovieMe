@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.UiThread
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +15,10 @@ import com.johnnyzhou.movieme.ui.common.BaseFragment
 import com.johnnyzhou.movieme.ui.common.UiState
 import com.johnnyzhou.movieme.ui.movie.Movie
 import com.johnnyzhou.movieme.ui.movie.detail.MovieDetailActivity
+import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlin.coroutines.EmptyCoroutineContext
 
 private const val KEY_LAST_QUERY = "last_query"
 
@@ -43,7 +48,8 @@ class MovieListFragment : BaseFragment() {
             .appComponent(appComponent)
             .build()
 
-        viewModel.getMovieUseCase = component.getMovieUserCase
+        // heres
+        viewModel.getMovieUseCase = component.movieUserCase
     }
 
     override fun onCreateView(
@@ -57,6 +63,7 @@ class MovieListFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
+
         if (savedInstanceState != null) currentQuery = savedInstanceState.getString(KEY_LAST_QUERY)
 
         viewModel.getMovieList()
@@ -69,6 +76,7 @@ class MovieListFragment : BaseFragment() {
     }
 
     private fun setUiState(uiState: UiState) {
+        arrayListOf<Int>().sort()
         when (uiState) {
             UiState.Error -> showErrorState()
             UiState.Loading -> showLoadingState()

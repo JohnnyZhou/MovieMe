@@ -14,5 +14,5 @@ interface FragmentComponent {
 
     fun inject(fragment: PersonListFragment?)
 
-    var getMovieUserCase: GetMovieUseCase
+    var movieUserCase: GetMovieUseCase
 }
