@@ -5,9 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.annotation.UiThread
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.johnnyzhou.movieme.databinding.FragmentMovieListBinding
 import com.johnnyzhou.movieme.di.component.DaggerFragmentComponent
@@ -15,41 +13,42 @@ import com.johnnyzhou.movieme.ui.common.BaseFragment
 import com.johnnyzhou.movieme.ui.common.UiState
 import com.johnnyzhou.movieme.ui.movie.Movie
 import com.johnnyzhou.movieme.ui.movie.detail.MovieDetailActivity
-import kotlinx.coroutines.CoroutineStart
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlin.coroutines.EmptyCoroutineContext
+import dagger.Lazy
+import javax.inject.Inject
 
 private const val KEY_LAST_QUERY = "last_query"
 
 class MovieListFragment : BaseFragment() {
     private val binding by lazy { FragmentMovieListBinding.inflate(layoutInflater) }
-    private val viewModel: MovieListViewModel by viewModels()
+
+//    private lateinit var viewModel: MovieListViewModel
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val viewModel: MovieListViewModel by lazy {
+        ViewModelProvider(this, viewModelFactory)
+            .get(MovieListViewModel::class.java)
+    }
 
     private var movies: List<Movie>? = null
     private var currentQuery: String? = null
-    private lateinit var adapter: MovieListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initialiseDependencies()
 
-        viewModel.uiState.observe(this, {
-            setUiState(it)
-        })
-
-        viewModel.movieList.observe(this, {
-            adapter.setMovies(it)
-        })
-    }
-
-    private fun initialiseDependencies() {
-        val component = DaggerFragmentComponent.builder()
+        DaggerFragmentComponent.builder()
             .appComponent(appComponent)
             .build()
+            .inject(this)
 
-        // heres
-        viewModel.getMovieUseCase = component.movieUserCase
+        viewModel.uiState.observe(this) {
+            setUiState(it)
+        }
+
+        viewModel.movieList.observe(this, {
+            (binding.movieRecyclerView.adapter as MovieListAdapter).setMovies(it)
+        })
     }
 
     override fun onCreateView(
@@ -66,12 +65,12 @@ class MovieListFragment : BaseFragment() {
 
         if (savedInstanceState != null) currentQuery = savedInstanceState.getString(KEY_LAST_QUERY)
 
-        viewModel.getMovieList()
+        // TODO, how to restore state?
+//        viewModel.getMovieList()
     }
 
     private fun setupRecyclerView() {
-        adapter = MovieListAdapter(requireContext())
-        binding.movieRecyclerView.adapter = adapter
+        binding.movieRecyclerView.adapter = MovieListAdapter(requireContext())
         binding.movieRecyclerView.layoutManager = LinearLayoutManager(context)
     }
 
@@ -126,6 +125,12 @@ class MovieListFragment : BaseFragment() {
     fun showError(message: String) {
         binding.errorTextView.visibility = View.VISIBLE
         binding.errorTextView.text = message
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.uiState.removeObservers(this)
+        viewModel.movieList.removeObservers(this)
     }
 
     override fun onStart() {

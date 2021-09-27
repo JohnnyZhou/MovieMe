@@ -1,26 +1,30 @@
 package com.johnnyzhou.movieme.ui.movie.list
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.johnnyzhou.movieme.business.GetMovieUseCase
 import com.johnnyzhou.movieme.ui.common.UiState
 import com.johnnyzhou.movieme.ui.movie.Movie
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class MovieListViewModel : ViewModel() {
+class MovieListViewModel @Inject constructor(private val getMovieUseCase: GetMovieUseCase) : ViewModel() {
     private val mutableUiState = MutableLiveData<UiState>()
     private val mutableMovieLiveData = MutableLiveData<List<Movie>>()
     val uiState: LiveData<UiState> = mutableUiState
     val movieList: LiveData<List<Movie>> = mutableMovieLiveData
 
-    lateinit var getMovieUseCase: GetMovieUseCase
+    init {
+        getMovieList() // this doesn't work
+        // https://stackoverflow.com/questions/61972739/use-the-same-instance-of-view-model-in-multiple-fragments-using-dagger2
+    }
 
-    // TODO check screen re-configuration
-    fun getMovieList() {
+    private val testLive: LiveData<Boolean> = liveData {
+        emit(true)
+    }
+
+    private fun getMovieList() {
         mutableUiState.value = UiState.Loading
         viewModelScope.launch {
             try {
@@ -35,8 +39,9 @@ class MovieListViewModel : ViewModel() {
         }
     }
 
-//    private suspend fun getPopularMovies() {
-//    }
+    override fun onCleared() {
+        super.onCleared()
+    }
 
     fun searchMovie(query: String?) {
 

@@ -33,7 +33,7 @@ import kotlinx.coroutines.*
 
 
 class MainActivity : BaseActivity() {
-    lateinit var movieListFragment: MovieListFragment
+//    lateinit var movieListFragment: MovieListFragment
     lateinit var personListFragment: PersonListFragment
     private var currentQuery: String? = null
     private var searchItem: MenuItem? = null
@@ -95,7 +95,7 @@ class MainActivity : BaseActivity() {
     }
 
     private fun setupFragment() {
-        movieListFragment = MovieListFragment.newInstance()
+//        movieListFragment = MovieListFragment.newInstance()
 //        if (currentFragment == MOVIES_FRAGMENT) {
 //            // TODO set toolbar title
 //            if (supportFragmentManager.findFragmentByTag(TAG_MOVIE_LIST) == null) {

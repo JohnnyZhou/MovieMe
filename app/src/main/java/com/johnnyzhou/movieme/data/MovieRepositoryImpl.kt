@@ -8,7 +8,6 @@ import com.johnnyzhou.movieme.ui.person.detail.PersonDetail
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
 class MovieRepositoryImpl @Inject constructor(
     private val movieService: MovieService
 ) : MovieRepository {

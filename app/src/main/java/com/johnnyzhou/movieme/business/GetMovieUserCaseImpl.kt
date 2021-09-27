@@ -3,8 +3,9 @@ package com.johnnyzhou.movieme.business
 import com.johnnyzhou.movieme.data.MovieRepository
 import com.johnnyzhou.movieme.ui.movie.Movie
 import com.johnnyzhou.movieme.ui.movie.detail.MovieDetail
+import javax.inject.Inject
 
-class GetMovieUserCaseImpl(private val repository: MovieRepository) : GetMovieUseCase {
+class GetMovieUserCaseImpl @Inject constructor(private val repository: MovieRepository) : GetMovieUseCase {
     override suspend fun getPopularMovies(): List<Movie> {
         return repository.getPopularMovies()
     }
