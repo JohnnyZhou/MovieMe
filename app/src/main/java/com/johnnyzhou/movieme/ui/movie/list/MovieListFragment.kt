@@ -8,16 +8,19 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.johnnyzhou.movieme.databinding.FragmentMovieListBinding
-import com.johnnyzhou.movieme.di.component.DaggerFragmentComponent
 import com.johnnyzhou.movieme.ui.common.BaseFragment
 import com.johnnyzhou.movieme.ui.common.UiState
 import com.johnnyzhou.movieme.ui.movie.Movie
 import com.johnnyzhou.movieme.ui.movie.detail.MovieDetailActivity
 import dagger.Lazy
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.EntryPointAccessors
+import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 
 private const val KEY_LAST_QUERY = "last_query"
 
+@AndroidEntryPoint
 class MovieListFragment : BaseFragment() {
     private val binding by lazy { FragmentMovieListBinding.inflate(layoutInflater) }
 
@@ -36,11 +39,6 @@ class MovieListFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        DaggerFragmentComponent.builder()
-            .appComponent(appComponent)
-            .build()
-            .inject(this)
 
         viewModel.uiState.observe(this) {
             setUiState(it)

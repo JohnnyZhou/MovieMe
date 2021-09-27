@@ -7,9 +7,12 @@ import com.johnnyzhou.movieme.ui.movie.list.MovieListFragment
 import com.johnnyzhou.movieme.ui.person.list.PersonListFragment
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
 
 @Module
-class ActivityModule(private val activity: BaseActivity) {
+@InstallIn(ActivityComponent::class)
+class ActivityModule {
     @PerActivity
     @Provides
     fun provideMovieListFragment(): MovieListFragment {
@@ -20,17 +23,5 @@ class ActivityModule(private val activity: BaseActivity) {
     @Provides
     fun providePersonListFragment(): PersonListFragment {
         return PersonListFragment.newInstance()
-    }
-
-    @PerActivity
-    @Provides
-    fun provideFragmentManager(): FragmentManager {
-        return activity.supportFragmentManager
-    }
-
-    @PerActivity
-    @Provides
-    fun provideActivity(): BaseActivity {
-        return activity
     }
 }

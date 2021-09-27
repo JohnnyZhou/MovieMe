@@ -8,14 +8,17 @@ import com.johnnyzhou.movieme.data.MovieRepositoryImpl
 import com.johnnyzhou.movieme.ui.movie.list.MovieListViewModel
 import dagger.Binds
 import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.FragmentComponent
 
 @Module
-interface FragmentBindingModule {
+@InstallIn(FragmentComponent::class)
+abstract class FragmentBindingModule {
     @Binds
-    fun bindGetMovieUseCase(useCase: GetMovieUserCaseImpl): GetMovieUseCase
+    abstract fun bindGetMovieUseCase(useCase: GetMovieUserCaseImpl): GetMovieUseCase
 
     @Binds
-    fun bindMovieRepository(repository: MovieRepositoryImpl): MovieRepository
+    abstract fun bindMovieRepository(repository: MovieRepositoryImpl): MovieRepository
 
 //    @Binds
 //    fun bindMovieListViewModel(viewModel: MovieListViewModel): ViewModel // shouldn't be creating it here

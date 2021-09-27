@@ -1,39 +1,24 @@
 package com.johnnyzhou.movieme.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.view.ViewTreeObserver
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.appcompat.widget.SearchView
-import androidx.core.view.GravityCompat
 import androidx.core.view.MenuItemCompat
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.johnnyzhou.movieme.R
-import com.johnnyzhou.movieme.business.GetMovieUseCase
 import com.johnnyzhou.movieme.databinding.ActivityMainBinding
-import com.johnnyzhou.movieme.di.component.DaggerActivityComponent
-import com.johnnyzhou.movieme.di.component.DaggerFragmentComponent
-import com.johnnyzhou.movieme.di.component.FragmentComponent
-import com.johnnyzhou.movieme.di.module.ActivityModule
 import com.johnnyzhou.movieme.ui.common.BaseActivity
 import com.johnnyzhou.movieme.ui.drawer.DrawerItemClick
-import com.johnnyzhou.movieme.ui.movie.Movie
-import com.johnnyzhou.movieme.ui.movie.detail.MovieDetail
-import com.johnnyzhou.movieme.ui.movie.list.MovieListFragment
 import com.johnnyzhou.movieme.ui.person.list.PersonListFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 
-
+@AndroidEntryPoint
 class MainActivity : BaseActivity() {
-//    lateinit var movieListFragment: MovieListFragment
+    //    lateinit var movieListFragment: MovieListFragment
     lateinit var personListFragment: PersonListFragment
     private var currentQuery: String? = null
     private var searchItem: MenuItem? = null
@@ -53,11 +38,12 @@ class MainActivity : BaseActivity() {
             currentQuery = savedInstanceState.getString(KEY_LAST_QUERY)
         }
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
         NavigationUI.setupWithNavController(binding.bottomNavigation, navController)
-        binding.bottomNavigation.setOnNavigationItemReselectedListener{
+        binding.bottomNavigation.setOnNavigationItemReselectedListener {
             // do nothing
         }
 
@@ -87,11 +73,11 @@ class MainActivity : BaseActivity() {
     }
 
     private fun initialiseInjectors() {
-        DaggerActivityComponent.builder()
-            .appComponent(applicationComponent)
-            .activityModule(ActivityModule(this))
-            .build()
-            .inject(this)
+//        DaggerActivityComponent.builder()
+//            .appComponent(applicationComponent)
+//            .activityModule(ActivityModule(this))
+//            .build()
+//            .inject(this)
     }
 
     private fun setupFragment() {
@@ -158,7 +144,7 @@ class MainActivity : BaseActivity() {
 //        if (drawer.isDrawerOpen(GravityCompat.START)) {
 //            drawer.closeDrawer(GravityCompat.START)
 //        } else {
-            super.onBackPressed()
+        super.onBackPressed()
 //        }
     }
 

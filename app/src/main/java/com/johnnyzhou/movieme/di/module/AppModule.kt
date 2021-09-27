@@ -8,6 +8,8 @@ import com.johnnyzhou.movieme.business.DateProvider
 import com.johnnyzhou.movieme.business.DateProviderImpl
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import rx.Scheduler
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
@@ -16,7 +18,8 @@ import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
-class AppModule(private val movieMeApp: MovieMeApplication) {
+@InstallIn(SingletonComponent::class)
+class AppModule {
 
     @Singleton
     @Provides
@@ -24,11 +27,11 @@ class AppModule(private val movieMeApp: MovieMeApplication) {
         return PreferenceManager.getDefaultSharedPreferences(movieMeApp)
     }
 
-    @Singleton
-    @Provides
-    fun provideApplicationContext(): Application {
-        return movieMeApp
-    }
+//    @Singleton
+//    @Provides
+//    fun provideApplicationContext(): Application {
+//        return movieMeApp
+//    }
 
     @Singleton
     @Provides

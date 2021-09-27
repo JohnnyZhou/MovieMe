@@ -14,12 +14,14 @@ import androidx.appcompat.widget.Toolbar;
 import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.johnnyzhou.movieme.R;
-import com.johnnyzhou.movieme.di.component.DaggerFragmentComponent;
 import com.johnnyzhou.movieme.ui.common.BaseActivity;
 import com.johnnyzhou.movieme.ui.common.BaseFragment;
 
 import javax.inject.Inject;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class PersonDetailFragment extends BaseFragment implements PersonDetailContract.View {
     private static final String ARG_PERSON_ID = "person_id";
 
@@ -38,7 +40,7 @@ public class PersonDetailFragment extends BaseFragment implements PersonDetailCo
 //    @Bind(R.id.dobTextView)
     TextView dobTextView;
 
-    @Inject
+//    @Inject
     PersonDetailContract.Presenter<PersonDetailContract.View> presenter;
 
     private String personId;

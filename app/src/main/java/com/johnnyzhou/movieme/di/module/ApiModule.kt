@@ -4,8 +4,11 @@ import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFact
 import com.johnnyzhou.movieme.data.MovieRepositoryImpl
 import com.johnnyzhou.movieme.network.ApiInterceptor
 import com.johnnyzhou.movieme.network.MovieService
+import com.johnnyzhou.movieme.util.NetworkUtil
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import okhttp3.Interceptor
@@ -16,7 +19,9 @@ import retrofit2.Retrofit
 import javax.inject.Singleton
 
 @Module
-class ApiModule(private val baseUrl: String) {
+@InstallIn(SingletonComponent::class)
+class ApiModule {
+
     @Provides
     @Singleton
     fun provideRestClient(movieService: MovieService?): MovieRepositoryImpl {
@@ -34,7 +39,8 @@ class ApiModule(private val baseUrl: String) {
     @Singleton
     fun provideRetrofit(converterFactory: Converter.Factory, okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(baseUrl)
+//            .baseUrl(baseUrl)
+            .baseUrl(NetworkUtil.API_URL)
             .addConverterFactory(converterFactory)
             .client(okHttpClient)
             .build()

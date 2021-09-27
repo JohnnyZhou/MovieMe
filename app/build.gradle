@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlinx-serialization'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -58,6 +59,10 @@ android {
     }
 }
 
+kapt {
+    correctErrorTypes true
+}
+
 dependencies {
     implementation 'androidx.test.ext:junit:1.1.3'
     implementation 'androidx.test:runner:1.4.0'
@@ -80,6 +85,9 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.3.1"
     implementation 'androidx.fragment:fragment-ktx:1.3.6'
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
+
+    implementation("com.google.dagger:hilt-android:2.38.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.38.1")
 
     // NETWORK
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
