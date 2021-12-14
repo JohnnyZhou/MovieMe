@@ -5,6 +5,13 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.activity.compose.setContent
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ComposeCompilerApi
+import androidx.compose.ui.semantics.SemanticsProperties.Text
+import androidx.compose.ui.text.input.KeyboardType.Companion.Text
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.MenuItemCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -29,48 +36,38 @@ class MainActivity : BaseActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+//        setContent {
+//            MessageCard("hello")
+//        }
 
+        binding.hello.text = "hlks"
 //        setSupportActionBar(toolbar);
-        val actionBar = supportActionBar
-        actionBar?.setDisplayShowTitleEnabled(false)
-        if (savedInstanceState != null) {
-            currentFragment = savedInstanceState.getInt(KEY_CURRENT_FRAGMENT)
-            currentQuery = savedInstanceState.getString(KEY_LAST_QUERY)
+//        val actionBar = supportActionBar
+//        actionBar?.setDisplayShowTitleEnabled(false)
+//        if (savedInstanceState != null) {
+//            currentFragment = savedInstanceState.getInt(KEY_CURRENT_FRAGMENT)
+//            currentQuery = savedInstanceState.getString(KEY_LAST_QUERY)
+//        }
+//
+//        val navHostFragment =
+//            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+//        val navController = navHostFragment.navController
+//
+//        NavigationUI.setupWithNavController(binding.bottomNavigation, navController)
+//        binding.bottomNavigation.setOnNavigationItemReselectedListener {
+//            // do nothing
+//        }
+//
+//        initialiseInjectors()
+//        setupDrawer()
+//        setupFragment()
         }
 
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        val navController = navHostFragment.navController
-
-        NavigationUI.setupWithNavController(binding.bottomNavigation, navController)
-        binding.bottomNavigation.setOnNavigationItemReselectedListener {
-            // do nothing
-        }
-
-        val one = GlobalScope.async(start = CoroutineStart.LAZY) {
-            withContext(Dispatchers.Main) {
-                Toast.makeText(this@MainActivity, "hello", Toast.LENGTH_LONG).show()
-                delay(1000)
-            }
-
-            "Johnny"
-        }
-
-        GlobalScope.launch {
-//            one.start()
-            coroutineContext
-            val result = one.await()
-            withContext(Dispatchers.Main) {
-                Toast.makeText(this@MainActivity, result, Toast.LENGTH_LONG).show()
-            }
-        }
-
-//        startActivity(Intent(this, MainActivity::class.java))
-//        viewModelStore
-        initialiseInjectors()
-        setupDrawer()
-        setupFragment()
-    }
+//    @Preview
+//    @Composable
+//    fun MessageCard(name: String) {
+//        Text(text = name)
+//    }
 
     private fun initialiseInjectors() {
 //        DaggerActivityComponent.builder()

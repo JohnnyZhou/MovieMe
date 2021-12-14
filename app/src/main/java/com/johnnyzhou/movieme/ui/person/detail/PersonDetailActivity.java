@@ -26,11 +26,11 @@ public class PersonDetailActivity extends BaseActivity {
     }
 
     private void setupFragment() {
-        if (getSupportFragmentManager().findFragmentByTag(TAG_PERSON_DETAIL) != null) return;
-
-        String personId = getIntent().getStringExtra(EXTRA_PERSON_ID);
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.detail_person_container, PersonDetailFragment.newInstance(personId), TAG_PERSON_DETAIL)
-                .commit();
+//        if (getSupportFragmentManager().findFragmentByTag(TAG_PERSON_DETAIL) != null) return;
+//
+//        String personId = getIntent().getStringExtra(EXTRA_PERSON_ID);
+//        getSupportFragmentManager().beginTransaction()
+//                .add(R.id.detail_person_container, PersonDetailFragment.newInstance(personId), TAG_PERSON_DETAIL)
+//                .commit();
     }
 }

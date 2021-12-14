@@ -1,6 +1,7 @@
 package com.johnnyzhou.movieme.ui.movie.detail;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.fragment.app.FragmentManager;
 

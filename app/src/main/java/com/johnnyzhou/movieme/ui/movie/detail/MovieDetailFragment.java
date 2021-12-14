@@ -115,15 +115,15 @@ public class MovieDetailFragment extends BaseFragment implements MovieDetailCont
     }
 
     private void setupToolbar() {
-        ((BaseActivity) getActivity()).setSupportActionBar(toolbar);
-        BaseActivity activity = (BaseActivity) getActivity();
-        activity.setSupportActionBar(toolbar);
-        ActionBar actionBar = activity.getSupportActionBar();
+//        ((BaseActivity) getActivity()).setSupportActionBar(toolbar);
+//        BaseActivity activity = (BaseActivity) getActivity();
+//        activity.setSupportActionBar(toolbar);
+//        ActionBar actionBar = activity.getSupportActionBar();
 
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setDisplayShowTitleEnabled(false);
-        }
+//        if (actionBar != null) {
+//            actionBar.setDisplayHomeAsUpEnabled(true);
+//            actionBar.setDisplayShowTitleEnabled(false);
+//        }
     }
 
     @Override

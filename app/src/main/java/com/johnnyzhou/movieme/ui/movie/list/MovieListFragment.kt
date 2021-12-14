@@ -5,8 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.johnnyzhou.movieme.R
 import com.johnnyzhou.movieme.databinding.FragmentMovieListBinding
 import com.johnnyzhou.movieme.ui.common.BaseFragment
 import com.johnnyzhou.movieme.ui.common.UiState
@@ -40,6 +43,8 @@ class MovieListFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val asd: EditText
+        val counter = Math.min(3, 4)
         viewModel.uiState.observe(this) {
             setUiState(it)
         }

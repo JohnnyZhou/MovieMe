@@ -87,15 +87,15 @@ public class PersonDetailFragment extends BaseFragment implements PersonDetailCo
     }
 
     private void setupToolbar() {
-        ((BaseActivity) getActivity()).setSupportActionBar(toolbar);
-        BaseActivity activity = (BaseActivity) getActivity();
-        activity.setSupportActionBar(toolbar);
-        ActionBar actionBar = activity.getSupportActionBar();
-
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setDisplayShowTitleEnabled(false);
-        }
+//        ((BaseActivity) getActivity()).setSupportActionBar(toolbar);
+//        BaseActivity activity = (BaseActivity) getActivity();
+//        activity.setSupportActionBar(toolbar);
+//        ActionBar actionBar = activity.getSupportActionBar();
+//
+//        if (actionBar != null) {
+//            actionBar.setDisplayHomeAsUpEnabled(true);
+//            actionBar.setDisplayShowTitleEnabled(false);
+//        }
     }
 
     @Override
